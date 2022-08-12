@@ -13,17 +13,11 @@
 		9F971C0E28A6884600063FCB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F971C0D28A6884600063FCB /* Preview Assets.xcassets */; };
 		9F971C1828A6884700063FCB /* PokerHandsKataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C1728A6884700063FCB /* PokerHandsKataTests.swift */; };
 		9F971C3128A6887100063FCB /* PokerHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C3028A6887100063FCB /* PokerHand.swift */; };
+		9F971C3428A688CB00063FCB /* PokerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C3328A688CB00063FCB /* PokerCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		9F971C1428A6884700063FCB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F971BFB28A6884500063FCB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9F971C0228A6884500063FCB;
-			remoteInfo = PokerHandsKata;
-		};
-		9F971C1E28A6884700063FCB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9F971BFB28A6884500063FCB /* Project object */;
 			proxyType = 1;
@@ -40,8 +34,8 @@
 		9F971C0D28A6884600063FCB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9F971C1328A6884700063FCB /* PokerHandsKataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokerHandsKataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F971C1728A6884700063FCB /* PokerHandsKataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerHandsKataTests.swift; sourceTree = "<group>"; };
-		9F971C1D28A6884700063FCB /* PokerHandsKataUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokerHandsKataUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F971C3028A6887100063FCB /* PokerHand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerHand.swift; sourceTree = "<group>"; };
+		9F971C3328A688CB00063FCB /* PokerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,13 +47,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		9F971C1028A6884700063FCB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F971C1A28A6884700063FCB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -83,7 +70,6 @@
 			children = (
 				9F971C0328A6884500063FCB /* PokerHandsKata.app */,
 				9F971C1328A6884700063FCB /* PokerHandsKataTests.xctest */,
-				9F971C1D28A6884700063FCB /* PokerHandsKataUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				9F971C3028A6887100063FCB /* PokerHand.swift */,
+				9F971C3328A688CB00063FCB /* PokerCard.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -162,24 +149,6 @@
 			productReference = 9F971C1328A6884700063FCB /* PokerHandsKataTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9F971C1C28A6884700063FCB /* PokerHandsKataUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9F971C2D28A6884700063FCB /* Build configuration list for PBXNativeTarget "PokerHandsKataUITests" */;
-			buildPhases = (
-				9F971C1928A6884700063FCB /* Sources */,
-				9F971C1A28A6884700063FCB /* Frameworks */,
-				9F971C1B28A6884700063FCB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9F971C1F28A6884700063FCB /* PBXTargetDependency */,
-			);
-			name = PokerHandsKataUITests;
-			productName = PokerHandsKataUITests;
-			productReference = 9F971C1D28A6884700063FCB /* PokerHandsKataUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -194,10 +163,6 @@
 						CreatedOnToolsVersion = 13.4.1;
 					};
 					9F971C1228A6884700063FCB = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = 9F971C0228A6884500063FCB;
-					};
-					9F971C1C28A6884700063FCB = {
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = 9F971C0228A6884500063FCB;
 					};
@@ -218,7 +183,6 @@
 			targets = (
 				9F971C0228A6884500063FCB /* PokerHandsKata */,
 				9F971C1228A6884700063FCB /* PokerHandsKataTests */,
-				9F971C1C28A6884700063FCB /* PokerHandsKataUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -240,13 +204,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F971C1B28A6884700063FCB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -255,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F971C0928A6884500063FCB /* ContentView.swift in Sources */,
+				9F971C3428A688CB00063FCB /* PokerCard.swift in Sources */,
 				9F971C0728A6884500063FCB /* PokerHandsKataApp.swift in Sources */,
 				9F971C3128A6887100063FCB /* PokerHand.swift in Sources */,
 			);
@@ -268,13 +226,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F971C1928A6884700063FCB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -282,11 +233,6 @@
 			isa = PBXTargetDependency;
 			target = 9F971C0228A6884500063FCB /* PokerHandsKata */;
 			targetProxy = 9F971C1428A6884700063FCB /* PBXContainerItemProxy */;
-		};
-		9F971C1F28A6884700063FCB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9F971C0228A6884500063FCB /* PokerHandsKata */;
-			targetProxy = 9F971C1E28A6884700063FCB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -499,40 +445,6 @@
 			};
 			name = Release;
 		};
-		9F971C2E28A6884700063FCB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.eugene.PokerHandsKataUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PokerHandsKata;
-			};
-			name = Debug;
-		};
-		9F971C2F28A6884700063FCB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.eugene.PokerHandsKataUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = PokerHandsKata;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -559,15 +471,6 @@
 			buildConfigurations = (
 				9F971C2B28A6884700063FCB /* Debug */,
 				9F971C2C28A6884700063FCB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9F971C2D28A6884700063FCB /* Build configuration list for PBXNativeTarget "PokerHandsKataUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F971C2E28A6884700063FCB /* Debug */,
-				9F971C2F28A6884700063FCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct PokerHand {
+
+  let cards: [PokerCard]
+}
