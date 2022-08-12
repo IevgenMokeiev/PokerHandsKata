@@ -11,14 +11,49 @@ import XCTest
 class PokerHandsKataTests: XCTestCase {
 
   func test_whenInputDataCorrect_thenInitialization() throws {
-    let card = PokerCard(stringRepresentation: "2H")
-    XCTAssertNotNil(card)
-    XCTAssertEqual(card?.suit, Suit.hearts)
-    XCTAssertEqual(card?.value, Value.two)
+    let card1 = PokerCard(stringRepresentation: "2H")
+    XCTAssertNotNil(card1)
+    XCTAssertEqual(card1?.suit, Suit.hearts)
+    XCTAssertEqual(card1?.value, Value.two)
+
+    let card2 = PokerCard(stringRepresentation: "JC")
+    XCTAssertNotNil(card2)
+    XCTAssertEqual(card2?.suit, Suit.clubs)
+    XCTAssertEqual(card2?.value, Value.jack)
   }
 
   func test_whenInputDataIncorrect_thenReturnsNil() throws {
-    let card = PokerCard(stringRepresentation: "2P")
-    XCTAssertNil(card)
+    let card1 = PokerCard(stringRepresentation: "2P")
+    XCTAssertNil(card1)
+
+    let card2 = PokerCard(stringRepresentation: "2H3")
+    XCTAssertNil(card2)
+
+    let card3 = PokerCard(stringRepresentation: "2")
+    XCTAssertNil(card3)
+  }
+
+  func test_whenHaveTwoHands_thenHighestWins() throws {
+    guard let black = PokerHand(stringRepresentation: "2H 3D 5S 9C KD") else {
+      XCTFail("corrupted hand")
+      return
+    }
+    guard let white = PokerHand(stringRepresentation: "2C 3H 4S 8C AH") else {
+      XCTFail("corrupted hand")
+      return
+    }
+
+    XCTAssertTrue(black < white)
+  }
+
+  func test_whenHandDataIncorrect_thenReturnsNil() throws {
+    let hand1 = PokerHand(stringRepresentation: "2H 3D 5S 9C KD 5S")
+    XCTAssertNil(hand1)
+
+    let hand2 = PokerHand(stringRepresentation: "2H 3D 5S 9C")
+    XCTAssertNil(hand2)
+
+    let hand3 = PokerHand(stringRepresentation: "2H 3D 5S 9C KQ")
+    XCTAssertNil(hand3)
   }
 }

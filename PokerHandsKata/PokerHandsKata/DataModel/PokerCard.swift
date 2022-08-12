@@ -14,7 +14,7 @@ enum Suit: String, Equatable {
   case spades = "S"
 }
 
-enum Value: String, Equatable {
+enum Value: String, CaseIterable, Comparable, Equatable {
   case two = "2"
   case three = "3"
   case four = "4"
@@ -28,6 +28,14 @@ enum Value: String, Equatable {
   case queen = "Q"
   case king = "K"
   case ace = "A"
+
+  var rank: Int {
+    return Self.allCases.firstIndex(of: self) ?? 0
+  }
+
+  static func < (lhs: Value, rhs: Value) -> Bool {
+    return lhs.rank < rhs.rank
+  }
 }
 
 struct PokerCard: Equatable {
