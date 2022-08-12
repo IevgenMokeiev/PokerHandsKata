@@ -10,7 +10,7 @@ import XCTest
 
 class PokerHandsKataTests: XCTestCase {
 
-  func test_whenInputDataCorrect_thenInitialization() throws {
+  func test_whenCardInputDataCorrect_thenInitialization() throws {
     let card1 = PokerCard(stringRepresentation: "2H")
     XCTAssertNotNil(card1)
     XCTAssertEqual(card1?.suit, Suit.hearts)
@@ -22,7 +22,7 @@ class PokerHandsKataTests: XCTestCase {
     XCTAssertEqual(card2?.value, Value.jack)
   }
 
-  func test_whenInputDataIncorrect_thenReturnsNil() throws {
+  func test_whenCardInputDataIncorrect_thenReturnsNil() throws {
     let card1 = PokerCard(stringRepresentation: "2P")
     XCTAssertNil(card1)
 
@@ -33,7 +33,18 @@ class PokerHandsKataTests: XCTestCase {
     XCTAssertNil(card3)
   }
 
-  func test_whenHaveTwoHands_thenHighestWins() throws {
+  func test_whenHandDataIncorrect_thenReturnsNil() throws {
+    let hand1 = PokerHand(stringRepresentation: "2H 3D 5S 9C KD 5S")
+    XCTAssertNil(hand1)
+
+    let hand2 = PokerHand(stringRepresentation: "2H 3D 5S 9C")
+    XCTAssertNil(hand2)
+
+    let hand3 = PokerHand(stringRepresentation: "2H 3D 5S 9C KQ")
+    XCTAssertNil(hand3)
+  }
+
+  func test_whenHighCardsOnly_thenHighestWins() throws {
     guard let black = PokerHand(stringRepresentation: "2H 3D 5S 9C KD") else {
       XCTFail("corrupted hand")
       return
@@ -46,14 +57,16 @@ class PokerHandsKataTests: XCTestCase {
     XCTAssertTrue(black < white)
   }
 
-  func test_whenHandDataIncorrect_thenReturnsNil() throws {
-    let hand1 = PokerHand(stringRepresentation: "2H 3D 5S 9C KD 5S")
-    XCTAssertNil(hand1)
+  func test_whenOneHasPair_thenPairWins() throws {
+    guard let black = PokerHand(stringRepresentation: "2H 3D 5S 9C 9D") else {
+      XCTFail("corrupted hand")
+      return
+    }
+    guard let white = PokerHand(stringRepresentation: "2C 3H 4S 8C AH") else {
+      XCTFail("corrupted hand")
+      return
+    }
 
-    let hand2 = PokerHand(stringRepresentation: "2H 3D 5S 9C")
-    XCTAssertNil(hand2)
-
-    let hand3 = PokerHand(stringRepresentation: "2H 3D 5S 9C KQ")
-    XCTAssertNil(hand3)
+    XCTAssertTrue(black > white)
   }
 }

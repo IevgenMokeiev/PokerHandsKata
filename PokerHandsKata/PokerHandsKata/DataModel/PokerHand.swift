@@ -52,11 +52,31 @@ struct PokerHand: Comparable {
   // MARK: - Combos
 
   private func determineCombo() -> Combo {
-    return highestCard()
+    if let combo = determineEquals() {
+      return combo
+    } else {
+      return highestCard()
+    }
   }
 
   private func highestCard() -> Combo {
     let sortedCards = cards.sorted { $0.value < $1.value }
     return .highCard(sortedCards.last?.value.rank ?? 0)
+  }
+
+  private func determineEquals() -> Combo? {
+    let values = cards.map { $0.value }
+    let set = Set(values)
+
+    switch set.count {
+    case 2:
+      return .pair(0)
+    case 3:
+      return .threeOfAKind(0)
+    case 4:
+      return .fourOfAKind(0)
+    default:
+      return nil
+    }
   }
 }
