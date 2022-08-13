@@ -46,7 +46,16 @@ struct PokerHand: Comparable {
   }
 
   static func < (lhs: PokerHand, rhs: PokerHand) -> Bool {
-    return lhs.combo < rhs.combo
+
+    if lhs.combo < rhs.combo {
+      return true
+    } else if rhs.combo < lhs.combo {
+      return false
+    } else {
+      let lhsRank = lhs.highestCardRank()
+      let rhsRank = rhs.highestCardRank()
+      return lhsRank < rhsRank
+    }
   }
 
   // MARK: - Combos
@@ -64,17 +73,38 @@ struct PokerHand: Comparable {
     return .highCard(sortedCards.last?.value.rank ?? 0)
   }
 
+  private func highestCardRank() -> Int {
+    let sortedCards = cards.sorted { $0.value < $1.value }
+    return sortedCards.last?.value.rank ?? 0
+  }
+
   private func determineEquals() -> Combo? {
     let values = cards.map { $0.value }
-    let set = Set(values)
+    let duplicatingValues = Dictionary(
+      grouping: values,
+      by: { $0 }
+    ).filter { $1.count > 1 }.keys
 
-    switch set.count {
+    switch duplicatingValues.count {
+    case 0:
+      return nil
+    case 1:
+      let value = duplicatingValues.first
+      let count = values.filter { $0 == value }.count
+      let cardRank = value?.rank ?? 0
+      switch count {
+      case 2:
+        return .pair(cardRank)
+      case 3:
+        return .threeOfAKind(cardRank)
+      case 4:
+        return .fourOfAKind(cardRank)
+      default:
+        return nil
+      }
     case 2:
-      return .pair(0)
-    case 3:
-      return .threeOfAKind(0)
-    case 4:
-      return .fourOfAKind(0)
+      // expand
+      return nil
     default:
       return nil
     }

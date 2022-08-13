@@ -30,7 +30,7 @@ enum Value: String, CaseIterable, Comparable, Equatable {
   case ace = "A"
 
   var rank: Int {
-    return Self.allCases.firstIndex(of: self) ?? 0
+    return (Self.allCases.firstIndex(of: self) ?? 0) + 2
   }
 
   static func < (lhs: Value, rhs: Value) -> Bool {

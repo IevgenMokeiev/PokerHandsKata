@@ -49,10 +49,13 @@ class PokerHandsKataTests: XCTestCase {
       XCTFail("corrupted hand")
       return
     }
+    XCTAssertEqual(black.combo, .highCard(13))
+
     guard let white = PokerHand(stringRepresentation: "2C 3H 4S 8C AH") else {
       XCTFail("corrupted hand")
       return
     }
+    XCTAssertEqual(white.combo, .highCard(14))
 
     XCTAssertTrue(black < white)
   }
@@ -62,10 +65,13 @@ class PokerHandsKataTests: XCTestCase {
       XCTFail("corrupted hand")
       return
     }
+    XCTAssertEqual(black.combo, .pair(9))
+
     guard let white = PokerHand(stringRepresentation: "2C 3H 4S 8C AH") else {
       XCTFail("corrupted hand")
       return
     }
+    XCTAssertEqual(white.combo, .highCard(14))
 
     XCTAssertTrue(black > white)
   }
