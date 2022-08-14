@@ -8,9 +8,9 @@
 import Foundation
 
 enum Combo: Comparable {
-  case highCard(Int)
-  case pair(Int)
-  case twoPairs(Int)
+  case highCard(Int, Int, Int, Int, Int)
+  case pair(Int, Int, Int, Int)
+  case twoPairs(Int, Int, Int)
   case threeOfAKind(Int)
   case straight(Int)
   case flush(Int)
@@ -46,22 +46,13 @@ struct PokerHand: Comparable {
   }
 
   static func < (lhs: PokerHand, rhs: PokerHand) -> Bool {
-
-    if lhs.combo < rhs.combo {
-      return true
-    } else if rhs.combo < lhs.combo {
-      return false
-    } else {
-      let lhsRank = lhs.highestCardRank()
-      let rhsRank = rhs.highestCardRank()
-      return lhsRank < rhsRank
-    }
+    return lhs.combo < rhs.combo
   }
 
   // MARK: - Combos
 
   private func determineCombo() -> Combo {
-    if let combo = determineEquals() {
+    if let combo = determineCardWithSameValue() {
       return combo
     } else {
       return highestCard()
@@ -69,42 +60,72 @@ struct PokerHand: Comparable {
   }
 
   private func highestCard() -> Combo {
-    let sortedCards = cards.sorted { $0.value < $1.value }
-    return .highCard(sortedCards.last?.value.rank ?? 0)
+    let sortedCards = cards.sorted { $0.value > $1.value }
+    let ranks = sortedCards.map { $0.value.rank }
+    return .highCard(
+      ranks[0],
+      ranks[1],
+      ranks[2],
+      ranks[3],
+      ranks[4]
+    )
   }
 
-  private func highestCardRank() -> Int {
-    let sortedCards = cards.sorted { $0.value < $1.value }
-    return sortedCards.last?.value.rank ?? 0
-  }
-
-  private func determineEquals() -> Combo? {
+  private func determineCardWithSameValue() -> Combo? {
     let values = cards.map { $0.value }
-    let duplicatingValues = Dictionary(
+    let repeatingValues = Dictionary(
       grouping: values,
       by: { $0 }
     ).filter { $1.count > 1 }.keys
+    let repeatingValuesArray = Array(repeatingValues)
 
-    switch duplicatingValues.count {
+    switch repeatingValuesArray.count {
     case 0:
       return nil
     case 1:
-      let value = duplicatingValues.first
+      let value = repeatingValuesArray.first
       let count = values.filter { $0 == value }.count
-      let cardRank = value?.rank ?? 0
+      let otherRanks = values
+        .filter { $0 != value }
+        .map { $0.rank }
+        .sorted { $0 > $1 }
+      let rank = value?.rank ?? 0
       switch count {
       case 2:
-        return .pair(cardRank)
+        return .pair(rank, otherRanks[0], otherRanks[1], otherRanks[2])
       case 3:
-        return .threeOfAKind(cardRank)
+        return .threeOfAKind(rank)
       case 4:
-        return .fourOfAKind(cardRank)
+        return .fourOfAKind(rank)
       default:
         return nil
       }
     case 2:
-      // expand
-      return nil
+      let value1 = repeatingValuesArray[0]
+      let count1 = values.filter { $0 == value1 }.count
+      let value2 = repeatingValuesArray[1]
+      let count2 = values.filter { $0 == value2 }.count
+
+      switch (count1, count2) {
+      case (2, 2):
+        let otherCardRank = values
+          .filter { $0 != value1 && $0 != value2 }
+          .map { $0.rank}
+          .first
+
+        guard let otherCardRank = otherCardRank else {
+          return nil
+        }
+
+        let ranks = [value1.rank, value2.rank, otherCardRank].sorted { $0 > $1 }
+        return .twoPairs(ranks[0], ranks[1], ranks[2])
+      case (2, 3):
+        return .fullHouse(value2.rank)
+      case (3, 2):
+        return .fullHouse(value1.rank)
+      default:
+        return nil
+      }
     default:
       return nil
     }

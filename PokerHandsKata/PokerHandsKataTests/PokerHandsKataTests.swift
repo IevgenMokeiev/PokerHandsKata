@@ -45,34 +45,92 @@ class PokerHandsKataTests: XCTestCase {
   }
 
   func test_whenHighCardsOnly_thenHighestWins() throws {
-    guard let black = PokerHand(stringRepresentation: "2H 3D 5S 9C KD") else {
-      XCTFail("corrupted hand")
-      return
-    }
-    XCTAssertEqual(black.combo, .highCard(13))
-
-    guard let white = PokerHand(stringRepresentation: "2C 3H 4S 8C AH") else {
-      XCTFail("corrupted hand")
-      return
-    }
-    XCTAssertEqual(white.combo, .highCard(14))
-
-    XCTAssertTrue(black < white)
+    expectHands(
+      hand1String: "2H 3D 5S 9C KD",
+      hand2String: "2C 3H 4S 8C AH",
+      expectedCombo1: .highCard(13, 9 ,5 ,3 ,2),
+      expectedCombo2: .highCard(14, 8, 4 ,3 ,2),
+      firstWins: false
+    )
   }
 
-  func test_whenOneHasPair_thenPairWins() throws {
-    guard let black = PokerHand(stringRepresentation: "2H 3D 5S 9C 9D") else {
-      XCTFail("corrupted hand")
+  func test_whenOnePair_thenPairWins() throws {
+    expectHands(
+      hand1String: "2H 3D 5S 9C 9D",
+      hand2String: "2C 3H 4S 8C AH",
+      expectedCombo1: .pair(9, 5 ,3 ,2),
+      expectedCombo2: .highCard(14, 8 ,4 ,3 ,2),
+      firstWins: true
+    )
+  }
+
+  func test_whenTwoPairs_thenHighestPairWins() throws {
+    expectHands(
+      hand1String: "2H 3D 5S 9C 9D",
+      hand2String: "2C 3H 4S 8C 8H",
+      expectedCombo1: .pair(9, 5 ,3 ,2),
+      expectedCombo2: .pair(8, 4 ,3 ,2),
+      firstWins: true
+    )
+  }
+
+  func test_whenTwoEqualPairs_thenHighestOtherCardWins() throws {
+    expectHands(
+      hand1String: "2H 3D 5S 9C 9D",
+      hand2String: "2C 3H 4S 9C 9H",
+      expectedCombo1: .pair(9, 5 ,3 ,2),
+      expectedCombo2: .pair(9, 4 ,3 ,2),
+      firstWins: true
+    )
+  }
+
+  func test_whenPairAndTwoPairs_thenTwoPairsWins() throws {
+    expectHands(
+      hand1String: "2H 3D 5S 9C 9D",
+      hand2String: "2C 4H 4S 9C 9H",
+      expectedCombo1: .pair(9, 5, 3 ,2),
+      expectedCombo2: .twoPairs(9, 4 ,2),
+      firstWins: false
+    )
+  }
+
+  func test_whenThreeAndTwoPairs_thenThreeWins() throws {
+    expectHands(
+      hand1String: "2H 3D 9S 9C 9D",
+      hand2String: "2C 4H 4S 9C 9H",
+      expectedCombo1: .threeOfAKind(9),
+      expectedCombo2: .twoPairs(9, 4, 2),
+      firstWins: true
+    )
+  }
+
+  // MARK: - Private
+
+  private func expectHands(
+    hand1String: String,
+    hand2String: String,
+    expectedCombo1: Combo,
+    expectedCombo2: Combo,
+    firstWins: Bool,
+    file: StaticString = #file,
+    line: UInt = #line
+  ) {
+    guard let hand1 = PokerHand(stringRepresentation: hand1String) else {
+      XCTFail("corrupted hand", file: file, line: line)
       return
     }
-    XCTAssertEqual(black.combo, .pair(9))
+    XCTAssertEqual(hand1.combo, expectedCombo1, file: file, line: line)
 
-    guard let white = PokerHand(stringRepresentation: "2C 3H 4S 8C AH") else {
-      XCTFail("corrupted hand")
+    guard let hand2 = PokerHand(stringRepresentation: hand2String) else {
+      XCTFail("corrupted hand", file: file, line: line)
       return
     }
-    XCTAssertEqual(white.combo, .highCard(14))
+    XCTAssertEqual(hand2.combo, expectedCombo2, file: file, line: line)
 
-    XCTAssertTrue(black > white)
+    if firstWins {
+      XCTAssertTrue(hand1 > hand2, "second wins", file: file, line: line)
+    } else {
+      XCTAssertTrue(hand1 < hand2, "first wins", file: file, line: line)
+    }
   }
 }
