@@ -7,19 +7,19 @@
 
 import Foundation
 
-enum Combo: Comparable {
+enum Combo: Comparable, Equatable {
   case highCard(Int, Int, Int, Int, Int)
   case pair(Int, Int, Int, Int)
   case twoPairs(Int, Int, Int)
   case threeOfAKind(Int)
   case straight(Int)
-  case flush(Int)
+  case flush(Int, Int, Int, Int, Int)
   case fullHouse(Int)
   case fourOfAKind(Int)
   case straightFlash(Int)
 }
 
-struct PokerHand: Comparable {
+struct PokerHand: Comparable, Equatable {
 
   let cards: [PokerCard]
 
@@ -49,12 +49,29 @@ struct PokerHand: Comparable {
     return lhs.combo < rhs.combo
   }
 
+  static func == (lhs: Self, rhs: Self) -> Bool {
+    return lhs.combo == rhs.combo
+  }
+
   // MARK: - Combos
 
   private func determineCombo() -> Combo {
-    if let combo = determineCardWithSameValue() {
+    let sameValuesCombo = determineCardsWithSameValues()
+    let flushCombo = determineFlush()
+    let straightCombo = determineStraight()
+
+    switch (sameValuesCombo, flushCombo, straightCombo) {
+    case (_ ,.some(flushCombo), .some(straightCombo)):
+      let ranks = cards.map { $0.value.rank }.sorted { $0 < $1 }
+      return .straightFlash(ranks.last ?? 0)
+    case let (.some(combo1), .some(combo2), nil),
+      let (.some(combo1), nil, .some(combo2)):
+      return max(combo1, combo2)
+    case let (nil, nil, .some(combo)),
+      let (nil, .some(combo), nil),
+      let (.some(combo), nil, nil):
       return combo
-    } else {
+    default:
       return highestCard()
     }
   }
@@ -71,7 +88,7 @@ struct PokerHand: Comparable {
     )
   }
 
-  private func determineCardWithSameValue() -> Combo? {
+  private func determineCardsWithSameValues() -> Combo? {
     let values = cards.map { $0.value }
     let repeatingValues = Dictionary(
       grouping: values,
@@ -127,6 +144,47 @@ struct PokerHand: Comparable {
         return nil
       }
     default:
+      return nil
+    }
+  }
+
+  private func determineStraight() -> Combo? {
+    let ranks = cards.map { $0.value.rank }.sorted { $0 < $1 }
+
+    let isStraight = (ranks.map { $0 - 1 }.dropFirst() == ranks.dropLast())
+
+    if isStraight {
+      return .straight(ranks.last ?? 0)
+    } else {
+      return nil
+    }
+  }
+
+  private func determineFlush() -> Combo? {
+    let suites = cards.map { $0.suit }
+    let repeatingSuites = Dictionary(
+      grouping: suites,
+      by: { $0 }
+    ).filter { $1.count > 1 }.keys
+
+    if repeatingSuites.count == 1 {
+      let suit = repeatingSuites.first
+      let count = suites.filter { $0 == suit }.count
+      switch count {
+      case 5:
+        let sortedCards = cards.sorted { $0.value > $1.value }
+        let ranks = sortedCards.map { $0.value.rank }
+        return .flush(
+          ranks[0],
+          ranks[1],
+          ranks[2],
+          ranks[3],
+          ranks[4]
+        )
+      default:
+        return nil
+      }
+    } else {
       return nil
     }
   }
