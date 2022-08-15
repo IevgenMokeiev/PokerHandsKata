@@ -14,6 +14,7 @@
 		9F971C1828A6884700063FCB /* PokerHandsKataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C1728A6884700063FCB /* PokerHandsKataTests.swift */; };
 		9F971C3128A6887100063FCB /* PokerHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C3028A6887100063FCB /* PokerHand.swift */; };
 		9F971C3428A688CB00063FCB /* PokerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C3328A688CB00063FCB /* PokerCard.swift */; };
+		9FE8E50528AA3C2D00B3B3D4 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE8E50428AA3C2D00B3B3D4 /* Array+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		9F971C1728A6884700063FCB /* PokerHandsKataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerHandsKataTests.swift; sourceTree = "<group>"; };
 		9F971C3028A6887100063FCB /* PokerHand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerHand.swift; sourceTree = "<group>"; };
 		9F971C3328A688CB00063FCB /* PokerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerCard.swift; sourceTree = "<group>"; };
+		9FE8E50428AA3C2D00B3B3D4 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				9F971C3028A6887100063FCB /* PokerHand.swift */,
 				9F971C3328A688CB00063FCB /* PokerCard.swift */,
+				9FE8E50428AA3C2D00B3B3D4 /* Array+Extensions.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F971C0928A6884500063FCB /* ContentView.swift in Sources */,
+				9FE8E50528AA3C2D00B3B3D4 /* Array+Extensions.swift in Sources */,
 				9F971C3428A688CB00063FCB /* PokerCard.swift in Sources */,
 				9F971C0728A6884500063FCB /* PokerHandsKataApp.swift in Sources */,
 				9F971C3128A6887100063FCB /* PokerHand.swift in Sources */,

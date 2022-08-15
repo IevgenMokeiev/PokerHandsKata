@@ -90,23 +90,22 @@ struct PokerHand: Comparable, Equatable {
 
   private func determineCardsWithSameValues() -> Combo? {
     let values = cards.map { $0.value }
-    let repeatingValues = Dictionary(
-      grouping: values,
-      by: { $0 }
-    ).filter { $1.count > 1 }.keys
-    let repeatingValuesArray = Array(repeatingValues)
+    let repeatingValues = values.findDuplicates()
+    let repeatingValuesKeysArray = Array(repeatingValues.keys)
 
-    switch repeatingValuesArray.count {
+    switch repeatingValuesKeysArray.count {
     case 0:
       return nil
     case 1:
-      let value = repeatingValuesArray.first
-      let count = values.filter { $0 == value }.count
+      guard let value = repeatingValuesKeysArray.first else {
+        return nil
+      }
+      let count = repeatingValues[value]
       let otherRanks = values
         .filter { $0 != value }
         .map { $0.rank }
         .sorted { $0 > $1 }
-      let rank = value?.rank ?? 0
+      let rank = value.rank
       switch count {
       case 2:
         return .pair(rank, otherRanks[0], otherRanks[1], otherRanks[2])
@@ -118,10 +117,10 @@ struct PokerHand: Comparable, Equatable {
         return nil
       }
     case 2:
-      let value1 = repeatingValuesArray[0]
-      let count1 = values.filter { $0 == value1 }.count
-      let value2 = repeatingValuesArray[1]
-      let count2 = values.filter { $0 == value2 }.count
+      let value1 = repeatingValuesKeysArray[0]
+      let value2 = repeatingValuesKeysArray[1]
+      let count1 = repeatingValues[value1]
+      let count2 = repeatingValues[value2]
 
       switch (count1, count2) {
       case (2, 2):
@@ -133,7 +132,6 @@ struct PokerHand: Comparable, Equatable {
         guard let otherCardRank = otherCardRank else {
           return nil
         }
-
         let ranks = [value1.rank, value2.rank, otherCardRank].sorted { $0 > $1 }
         return .twoPairs(ranks[0], ranks[1], ranks[2])
       case (2, 3):
@@ -149,12 +147,8 @@ struct PokerHand: Comparable, Equatable {
   }
 
   private func determineStraight() -> Combo? {
-    let ranks = cards.map { $0.value.rank }.sorted { $0 < $1 }
-
-    let isStraight = (ranks.map { $0 - 1 }.dropFirst() == ranks.dropLast())
-
-    if isStraight {
-      return .straight(ranks.last ?? 0)
+    if sortedRanks.isSequential() {
+      return .straight(sortedRanks.last ?? 0)
     } else {
       return nil
     }
@@ -162,24 +156,18 @@ struct PokerHand: Comparable, Equatable {
 
   private func determineFlush() -> Combo? {
     let suites = cards.map { $0.suit }
-    let repeatingSuites = Dictionary(
-      grouping: suites,
-      by: { $0 }
-    ).filter { $1.count > 1 }.keys
+    let repeatingSuites = suites.findDuplicates()
 
-    if repeatingSuites.count == 1 {
-      let suit = repeatingSuites.first
-      let count = suites.filter { $0 == suit }.count
-      switch count {
+    if repeatingSuites.keys.count == 1,
+        let suit = repeatingSuites.keys.first {
+      switch repeatingSuites[suit] {
       case 5:
-        let sortedCards = cards.sorted { $0.value > $1.value }
-        let ranks = sortedCards.map { $0.value.rank }
         return .flush(
-          ranks[0],
-          ranks[1],
-          ranks[2],
-          ranks[3],
-          ranks[4]
+          sortedRanks[0],
+          sortedRanks[1],
+          sortedRanks[2],
+          sortedRanks[3],
+          sortedRanks[4]
         )
       default:
         return nil
@@ -187,5 +175,11 @@ struct PokerHand: Comparable, Equatable {
     } else {
       return nil
     }
+  }
+
+  // MARK: - Utility
+
+  var sortedRanks: [Int] {
+    return cards.map { $0.value.rank }.sorted { $0 > $1 }
   }
 }
