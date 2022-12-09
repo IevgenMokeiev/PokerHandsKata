@@ -143,9 +143,9 @@ class PokerHandsKataTests: XCTestCase {
    func test_whenTwoStraights_thenHighestWins() throws {
       expectHands(
          hand1String: "2H 3S 4C 5D 6H",
-         hand2String: "3S 4S 5C 6S 7H",
+         hand2String: "QS KS AC 2S 3H",
          expectedCombo1: .straight(6),
-         expectedCombo2: .straight(7),
+         expectedCombo2: .straight(14),
          expectedResult: .secondWins
       )
    }
