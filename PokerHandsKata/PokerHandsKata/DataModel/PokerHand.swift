@@ -148,7 +148,7 @@ struct PokerHand: Comparable, Equatable {
 
   private func determineStraight() -> Combo? {
     if sortedRanks.isSequential() {
-      return .straight(sortedRanks.last ?? 0)
+      return .straight(sortedRanks.first ?? 0)
     } else {
       return nil
     }
