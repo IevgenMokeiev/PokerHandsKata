@@ -80,7 +80,7 @@ class PokerHandsKataTests: XCTestCase {
       )
    }
 
-   func test_whenTwoPairs_thenHighestPairWins() throws {
+   func test_whenTwoPairs_thenHighestWins() throws {
       expectHands(
          hand1String: "2H 3D 5S 9C 9D",
          hand2String: "2C 3H 4S 8C 8H",
@@ -120,7 +120,7 @@ class PokerHandsKataTests: XCTestCase {
       )
    }
 
-   func test_whenTwoThrees_thenHighestThreeWins() throws {
+   func test_whenTwoThrees_thenHighestWins() throws {
       expectHands(
          hand1String: "2H 3D 9S 9C 9D",
          hand2String: "2C 4H 10S 10C 10H",
@@ -140,12 +140,92 @@ class PokerHandsKataTests: XCTestCase {
       )
    }
 
+   func test_whenTwoStraights_thenHighestWins() throws {
+      expectHands(
+         hand1String: "2H 3S 4C 5D 6H",
+         hand2String: "3S 4S 5C 6S 7H",
+         expectedCombo1: .straight(6),
+         expectedCombo2: .straight(7),
+         expectedResult: .secondWins
+      )
+   }
+
+   func test_whenFlushAndStraight_thenFlushWins() throws {
+      expectHands(
+         hand1String: "2H 3S 4C 5D 6H",
+         hand2String: "2S 8S 10S QS AS",
+         expectedCombo1: .straight(6),
+         expectedCombo2: .flush(14, 12, 10, 8, 2),
+         expectedResult: .secondWins
+      )
+   }
+
+   func test_whenTwoFlushes_thenHighestWins() throws {
+      expectHands(
+         hand1String: "2H 3H 4H 5H 7H",
+         hand2String: "2S 8S 10S QS AS",
+         expectedCombo1: .flush(7, 5, 4, 3, 2),
+         expectedCombo2: .flush(14, 12, 10, 8, 2),
+         expectedResult: .secondWins
+      )
+   }
+
    func test_whenFullHouseAndFlush_thenFullHouseWins() throws {
       expectHands(
          hand1String: "2H 4S 4C 2D 4H",
          hand2String: "2S 8S AS QS 3S",
          expectedCombo1: .fullHouse(4),
          expectedCombo2: .flush(14, 12, 8, 3, 2),
+         expectedResult: .firstWins
+      )
+   }
+
+   func test_whenTwoFullHouses_thenHighestWins() throws {
+      expectHands(
+         hand1String: "2H 4S 4C 2D 4H",
+         hand2String: "3S 8S 3S 8H 8C",
+         expectedCombo1: .fullHouse(4),
+         expectedCombo2: .fullHouse(8),
+         expectedResult: .secondWins
+      )
+   }
+
+   func test_whenFullHouseAndFour_thenFourWins() throws {
+      expectHands(
+         hand1String: "2H 4S 4C 2D 4H",
+         hand2String: "3S 10S 10H 10D 10C",
+         expectedCombo1: .fullHouse(4),
+         expectedCombo2: .fourOfAKind(10),
+         expectedResult: .secondWins
+      )
+   }
+
+   func test_whenTwoFours_thenHighestWins() throws {
+      expectHands(
+         hand1String: "7H 4S 7C 7D 7S",
+         hand2String: "3S 10S 10H 10D 10C",
+         expectedCombo1: .fourOfAKind(7),
+         expectedCombo2: .fourOfAKind(10),
+         expectedResult: .secondWins
+      )
+   }
+
+   func test_whenFourAndStraightFlush_thenStraightFlushWins() throws {
+      expectHands(
+         hand1String: "7H 4S 7C 7D 7S",
+         hand2String: "3S 4S 5S 6S 7S",
+         expectedCombo1: .fourOfAKind(7),
+         expectedCombo2: .straightFlash(7),
+         expectedResult: .secondWins
+      )
+   }
+
+   func test_whenTwoStraightFlushes_thenHighestWins() throws {
+      expectHands(
+         hand1String: "7D 8D 9D 10D JD",
+         hand2String: "3S 4S 5S 6S 7S",
+         expectedCombo1: .straightFlash(11),
+         expectedCombo2: .straightFlash(7),
          expectedResult: .firstWins
       )
    }
