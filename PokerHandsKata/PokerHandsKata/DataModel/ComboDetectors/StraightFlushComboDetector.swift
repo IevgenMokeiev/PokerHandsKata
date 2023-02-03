@@ -13,6 +13,7 @@ struct StraightFlushComboDetector: ComboDetector {
     private let flushComboDetector = FlushComboDetector()
 
     func determineCombo(cards: [PokerCard]) -> Combo? {
+
         if straightComboDetector.determineCombo(cards: cards) != nil,
            flushComboDetector.determineCombo(cards: cards) != nil {
             return .straightFlash(cards.sortedRanks.first ?? 0)

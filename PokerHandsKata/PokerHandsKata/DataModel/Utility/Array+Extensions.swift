@@ -8,7 +8,7 @@
 import Foundation
 
 extension Array where Element: Hashable {
-    var duplicates: [Element : Int] {
+    var duplicatesMap: [Element : Int] {
         let repeatingElements = Dictionary(
             grouping: self,
             by: { $0 }

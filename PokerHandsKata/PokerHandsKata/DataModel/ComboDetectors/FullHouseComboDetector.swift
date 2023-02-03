@@ -10,12 +10,15 @@ import Foundation
 class FullHouseComboDetector: ComboDetector {
 
     func determineCombo(cards: [PokerCard]) -> Combo? {
+
         let values = cards.values
-        let repeatingValues = values.duplicates
+        let repeatingValues = values.duplicatesMap
         let repeatingValuesKeysArray = Array(repeatingValues.keys)
+
         guard  repeatingValuesKeysArray.count == 2 else {
             return nil
         }
+
         let value1 = repeatingValuesKeysArray[0]
         let value2 = repeatingValuesKeysArray[1]
         switch (repeatingValues[value1], repeatingValues[value2]) {
@@ -28,6 +31,4 @@ class FullHouseComboDetector: ComboDetector {
         }
     }
 }
-
-
 

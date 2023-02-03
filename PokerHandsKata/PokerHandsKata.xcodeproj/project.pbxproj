@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F4D4951298D8C810052EB4A /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D4950298D8C810052EB4A /* Suit.swift */; };
+		9F4D4953298D8C8B0052EB4A /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F4D4952298D8C8B0052EB4A /* Value.swift */; };
 		9F971C0728A6884500063FCB /* PokerHandsKataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C0628A6884500063FCB /* PokerHandsKataApp.swift */; };
 		9F971C0928A6884500063FCB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C0828A6884500063FCB /* ContentView.swift */; };
 		9F971C0B28A6884600063FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F971C0A28A6884600063FCB /* Assets.xcassets */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F4D4950298D8C810052EB4A /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
+		9F4D4952298D8C8B0052EB4A /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		9F971C0328A6884500063FCB /* PokerHandsKata.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerHandsKata.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F971C0628A6884500063FCB /* PokerHandsKataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerHandsKataApp.swift; sourceTree = "<group>"; };
 		9F971C0828A6884500063FCB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +82,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F4D494F298D8C710052EB4A /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				9F971C3328A688CB00063FCB /* PokerCard.swift */,
+				9FA6E110298D57B700AE69D6 /* Combo.swift */,
+				9F4D4950298D8C810052EB4A /* Suit.swift */,
+				9F4D4952298D8C8B0052EB4A /* Value.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		9F4D4954298D98610052EB4A /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				9FE8E50428AA3C2D00B3B3D4 /* Array+Extensions.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		9F971BFA28A6884500063FCB = {
 			isa = PBXGroup;
 			children = (
@@ -128,9 +151,9 @@
 			isa = PBXGroup;
 			children = (
 				9F971C3028A6887100063FCB /* PokerHand.swift */,
-				9F971C3328A688CB00063FCB /* PokerCard.swift */,
-				9FE8E50428AA3C2D00B3B3D4 /* Array+Extensions.swift */,
+				9F4D494F298D8C710052EB4A /* Cards */,
 				9FA6E10B298D565700AE69D6 /* ComboDetectors */,
+				9F4D4954298D98610052EB4A /* Utility */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -140,7 +163,6 @@
 			children = (
 				9FA6E10C298D566600AE69D6 /* ComboDetector.swift */,
 				9FA6E11F298D633B00AE69D6 /* StraightFlushComboDetector.swift */,
-				9FA6E110298D57B700AE69D6 /* Combo.swift */,
 				9FA6E10E298D56BB00AE69D6 /* StraightComboDetector.swift */,
 				9FA6E112298D587100AE69D6 /* FlushComboDetector.swift */,
 				9FA6E114298D591B00AE69D6 /* PairComboDetector.swift */,
@@ -257,11 +279,13 @@
 				9FA6E113298D587100AE69D6 /* FlushComboDetector.swift in Sources */,
 				9FE8E50528AA3C2D00B3B3D4 /* Array+Extensions.swift in Sources */,
 				9FA6E10F298D56BB00AE69D6 /* StraightComboDetector.swift in Sources */,
+				9F4D4953298D8C8B0052EB4A /* Value.swift in Sources */,
 				9FA6E119298D5D0700AE69D6 /* ThreeOfAKindComboDetector.swift in Sources */,
 				9FA6E11E298D610A00AE69D6 /* FullHouseComboDetector.swift in Sources */,
 				9F971C3428A688CB00063FCB /* PokerCard.swift in Sources */,
 				9F971C0728A6884500063FCB /* PokerHandsKataApp.swift in Sources */,
 				9FA6E115298D591B00AE69D6 /* PairComboDetector.swift in Sources */,
+				9F4D4951298D8C810052EB4A /* Suit.swift in Sources */,
 				9FA6E10D298D566600AE69D6 /* ComboDetector.swift in Sources */,
 				9FA6E120298D633B00AE69D6 /* StraightFlushComboDetector.swift in Sources */,
 				9FA6E111298D57B700AE69D6 /* Combo.swift in Sources */,

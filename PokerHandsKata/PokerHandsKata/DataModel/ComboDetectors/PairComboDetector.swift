@@ -10,14 +10,16 @@ import Foundation
 class PairComboDetector: ComboDetector {
 
     func determineCombo(cards: [PokerCard]) -> Combo? {
+
         let values = cards.values
-        let repeatingValues = values.duplicates
+        let repeatingValues = cards.values.duplicatesMap
         let repeatingValuesKeysArray = Array(repeatingValues.keys)
 
         guard repeatingValuesKeysArray.count == 1,
                 let value = repeatingValuesKeysArray.first else {
             return nil
         }
+
         let otherRanks = values.sortedRanks(except: [value])
         switch repeatingValues[value] {
         case 2:
