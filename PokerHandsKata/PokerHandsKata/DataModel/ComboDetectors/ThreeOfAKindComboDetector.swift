@@ -18,12 +18,9 @@ class ThreeOfAKindComboDetector: ComboDetector {
               let value = repeatingValuesKeysArray.first else {
             return nil
         }
-        let count = repeatingValues[value]
-        let otherRanks = values.sortedRanks(except: [value])
-        let rank = value.rank
-        switch count {
+        switch repeatingValues[value] {
         case 3:
-            return .threeOfAKind(rank)
+            return .threeOfAKind(value.rank)
         default:
             return nil
         }

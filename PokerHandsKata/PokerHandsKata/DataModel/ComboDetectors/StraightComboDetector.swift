@@ -15,7 +15,9 @@ class StraightComboDetector: ComboDetector {
         if sortedRanks.isSequential {
             return .straight(sortedRanks.first ?? 0)
         } else {
-            let moduleRanks = cards.map { $0.value.rank > 10 ? $0.value.rank - 13 : $0.value.rank }.sorted { $0 > $1 }
+            let moduleRanks = cards
+                .map { $0.value.rank > 10 ? $0.value.rank - 13 : $0.value.rank }
+                .sorted { $0 > $1 }
             if moduleRanks.isSequential {
                 return .straight(sortedRanks.first ?? 0)
             } else {

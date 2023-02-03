@@ -18,12 +18,9 @@ class FourOfAKindComboDetector: ComboDetector {
               let value = repeatingValuesKeysArray.first else {
             return nil
         }
-        let count = repeatingValues[value]
-        let otherRanks = values.sortedRanks(except: [value])
-        let rank = value.rank
-        switch count {
+        switch repeatingValues[value] {
         case 4:
-            return .fourOfAKind(rank)
+            return .fourOfAKind(value.rank)
         default:
             return nil
         }

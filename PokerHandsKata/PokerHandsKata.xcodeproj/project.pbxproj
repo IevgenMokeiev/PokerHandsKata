@@ -23,6 +23,7 @@
 		9FA6E119298D5D0700AE69D6 /* ThreeOfAKindComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E118298D5D0700AE69D6 /* ThreeOfAKindComboDetector.swift */; };
 		9FA6E11B298D60AC00AE69D6 /* FourOfAKindComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E11A298D60AC00AE69D6 /* FourOfAKindComboDetector.swift */; };
 		9FA6E11E298D610A00AE69D6 /* FullHouseComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E11D298D610A00AE69D6 /* FullHouseComboDetector.swift */; };
+		9FA6E120298D633B00AE69D6 /* StraightFlushComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E11F298D633B00AE69D6 /* StraightFlushComboDetector.swift */; };
 		9FE8E50528AA3C2D00B3B3D4 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE8E50428AA3C2D00B3B3D4 /* Array+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		9FA6E118298D5D0700AE69D6 /* ThreeOfAKindComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeOfAKindComboDetector.swift; sourceTree = "<group>"; };
 		9FA6E11A298D60AC00AE69D6 /* FourOfAKindComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourOfAKindComboDetector.swift; sourceTree = "<group>"; };
 		9FA6E11D298D610A00AE69D6 /* FullHouseComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHouseComboDetector.swift; sourceTree = "<group>"; };
+		9FA6E11F298D633B00AE69D6 /* StraightFlushComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraightFlushComboDetector.swift; sourceTree = "<group>"; };
 		9FE8E50428AA3C2D00B3B3D4 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				9FA6E10C298D566600AE69D6 /* ComboDetector.swift */,
+				9FA6E11F298D633B00AE69D6 /* StraightFlushComboDetector.swift */,
 				9FA6E110298D57B700AE69D6 /* Combo.swift */,
 				9FA6E10E298D56BB00AE69D6 /* StraightComboDetector.swift */,
 				9FA6E112298D587100AE69D6 /* FlushComboDetector.swift */,
@@ -260,6 +263,7 @@
 				9F971C0728A6884500063FCB /* PokerHandsKataApp.swift in Sources */,
 				9FA6E115298D591B00AE69D6 /* PairComboDetector.swift in Sources */,
 				9FA6E10D298D566600AE69D6 /* ComboDetector.swift in Sources */,
+				9FA6E120298D633B00AE69D6 /* StraightFlushComboDetector.swift in Sources */,
 				9FA6E111298D57B700AE69D6 /* Combo.swift in Sources */,
 				9F971C3128A6887100063FCB /* PokerHand.swift in Sources */,
 				9FA6E117298D5BF600AE69D6 /* TwoPairsComboDetector.swift in Sources */,

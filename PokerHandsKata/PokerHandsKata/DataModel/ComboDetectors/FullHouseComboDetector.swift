@@ -18,10 +18,7 @@ class FullHouseComboDetector: ComboDetector {
         }
         let value1 = repeatingValuesKeysArray[0]
         let value2 = repeatingValuesKeysArray[1]
-        let count1 = repeatingValues[value1]
-        let count2 = repeatingValues[value2]
-
-        switch (count1, count2) {
+        switch (repeatingValues[value1], repeatingValues[value2]) {
         case (2, 3):
             return .fullHouse(value2.rank)
         case (3, 2):

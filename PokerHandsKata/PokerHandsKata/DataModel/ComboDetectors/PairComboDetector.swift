@@ -18,12 +18,10 @@ class PairComboDetector: ComboDetector {
                 let value = repeatingValuesKeysArray.first else {
             return nil
         }
-        let count = repeatingValues[value]
         let otherRanks = values.sortedRanks(except: [value])
-        let rank = value.rank
-        switch count {
+        switch repeatingValues[value] {
         case 2:
-            return .pair(rank, otherRanks[0], otherRanks[1], otherRanks[2])
+            return .pair(value.rank, otherRanks[0], otherRanks[1], otherRanks[2])
         default:
             return nil
         }
