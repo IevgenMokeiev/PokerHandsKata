@@ -14,6 +14,15 @@
 		9F971C1828A6884700063FCB /* PokerHandsKataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C1728A6884700063FCB /* PokerHandsKataTests.swift */; };
 		9F971C3128A6887100063FCB /* PokerHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C3028A6887100063FCB /* PokerHand.swift */; };
 		9F971C3428A688CB00063FCB /* PokerCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F971C3328A688CB00063FCB /* PokerCard.swift */; };
+		9FA6E10D298D566600AE69D6 /* ComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E10C298D566600AE69D6 /* ComboDetector.swift */; };
+		9FA6E10F298D56BB00AE69D6 /* StraightComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E10E298D56BB00AE69D6 /* StraightComboDetector.swift */; };
+		9FA6E111298D57B700AE69D6 /* Combo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E110298D57B700AE69D6 /* Combo.swift */; };
+		9FA6E113298D587100AE69D6 /* FlushComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E112298D587100AE69D6 /* FlushComboDetector.swift */; };
+		9FA6E115298D591B00AE69D6 /* PairComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E114298D591B00AE69D6 /* PairComboDetector.swift */; };
+		9FA6E117298D5BF600AE69D6 /* TwoPairsComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E116298D5BF600AE69D6 /* TwoPairsComboDetector.swift */; };
+		9FA6E119298D5D0700AE69D6 /* ThreeOfAKindComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E118298D5D0700AE69D6 /* ThreeOfAKindComboDetector.swift */; };
+		9FA6E11B298D60AC00AE69D6 /* FourOfAKindComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E11A298D60AC00AE69D6 /* FourOfAKindComboDetector.swift */; };
+		9FA6E11E298D610A00AE69D6 /* FullHouseComboDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FA6E11D298D610A00AE69D6 /* FullHouseComboDetector.swift */; };
 		9FE8E50528AA3C2D00B3B3D4 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE8E50428AA3C2D00B3B3D4 /* Array+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +46,15 @@
 		9F971C1728A6884700063FCB /* PokerHandsKataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerHandsKataTests.swift; sourceTree = "<group>"; };
 		9F971C3028A6887100063FCB /* PokerHand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerHand.swift; sourceTree = "<group>"; };
 		9F971C3328A688CB00063FCB /* PokerCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokerCard.swift; sourceTree = "<group>"; };
+		9FA6E10C298D566600AE69D6 /* ComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComboDetector.swift; sourceTree = "<group>"; };
+		9FA6E10E298D56BB00AE69D6 /* StraightComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraightComboDetector.swift; sourceTree = "<group>"; };
+		9FA6E110298D57B700AE69D6 /* Combo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Combo.swift; sourceTree = "<group>"; };
+		9FA6E112298D587100AE69D6 /* FlushComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlushComboDetector.swift; sourceTree = "<group>"; };
+		9FA6E114298D591B00AE69D6 /* PairComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairComboDetector.swift; sourceTree = "<group>"; };
+		9FA6E116298D5BF600AE69D6 /* TwoPairsComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoPairsComboDetector.swift; sourceTree = "<group>"; };
+		9FA6E118298D5D0700AE69D6 /* ThreeOfAKindComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeOfAKindComboDetector.swift; sourceTree = "<group>"; };
+		9FA6E11A298D60AC00AE69D6 /* FourOfAKindComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourOfAKindComboDetector.swift; sourceTree = "<group>"; };
+		9FA6E11D298D610A00AE69D6 /* FullHouseComboDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullHouseComboDetector.swift; sourceTree = "<group>"; };
 		9FE8E50428AA3C2D00B3B3D4 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,8 +128,25 @@
 				9F971C3028A6887100063FCB /* PokerHand.swift */,
 				9F971C3328A688CB00063FCB /* PokerCard.swift */,
 				9FE8E50428AA3C2D00B3B3D4 /* Array+Extensions.swift */,
+				9FA6E10B298D565700AE69D6 /* ComboDetectors */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		9FA6E10B298D565700AE69D6 /* ComboDetectors */ = {
+			isa = PBXGroup;
+			children = (
+				9FA6E10C298D566600AE69D6 /* ComboDetector.swift */,
+				9FA6E110298D57B700AE69D6 /* Combo.swift */,
+				9FA6E10E298D56BB00AE69D6 /* StraightComboDetector.swift */,
+				9FA6E112298D587100AE69D6 /* FlushComboDetector.swift */,
+				9FA6E114298D591B00AE69D6 /* PairComboDetector.swift */,
+				9FA6E116298D5BF600AE69D6 /* TwoPairsComboDetector.swift */,
+				9FA6E118298D5D0700AE69D6 /* ThreeOfAKindComboDetector.swift */,
+				9FA6E11A298D60AC00AE69D6 /* FourOfAKindComboDetector.swift */,
+				9FA6E11D298D610A00AE69D6 /* FullHouseComboDetector.swift */,
+			);
+			path = ComboDetectors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,11 +249,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FA6E11B298D60AC00AE69D6 /* FourOfAKindComboDetector.swift in Sources */,
 				9F971C0928A6884500063FCB /* ContentView.swift in Sources */,
+				9FA6E113298D587100AE69D6 /* FlushComboDetector.swift in Sources */,
 				9FE8E50528AA3C2D00B3B3D4 /* Array+Extensions.swift in Sources */,
+				9FA6E10F298D56BB00AE69D6 /* StraightComboDetector.swift in Sources */,
+				9FA6E119298D5D0700AE69D6 /* ThreeOfAKindComboDetector.swift in Sources */,
+				9FA6E11E298D610A00AE69D6 /* FullHouseComboDetector.swift in Sources */,
 				9F971C3428A688CB00063FCB /* PokerCard.swift in Sources */,
 				9F971C0728A6884500063FCB /* PokerHandsKataApp.swift in Sources */,
+				9FA6E115298D591B00AE69D6 /* PairComboDetector.swift in Sources */,
+				9FA6E10D298D566600AE69D6 /* ComboDetector.swift in Sources */,
+				9FA6E111298D57B700AE69D6 /* Combo.swift in Sources */,
 				9F971C3128A6887100063FCB /* PokerHand.swift in Sources */,
+				9FA6E117298D5BF600AE69D6 /* TwoPairsComboDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +407,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PokerHandsKata/Preview Content\"";
+				DEVELOPMENT_TEAM = 95MM8CRASD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -391,6 +436,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PokerHandsKata/Preview Content\"";
+				DEVELOPMENT_TEAM = 95MM8CRASD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -418,6 +464,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 95MM8CRASD;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -437,6 +484,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 95MM8CRASD;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
