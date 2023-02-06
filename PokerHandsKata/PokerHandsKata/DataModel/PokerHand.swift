@@ -41,7 +41,6 @@ struct PokerHand: Comparable, Equatable {
     // MARK: - Private
 
     private static func determineCombo(cards: [PokerCard]) -> Combo {
-
         var resultCombo: Combo?
         for comboDetector in comboDetectors {
             if let combo = comboDetector.determineCombo(cards: cards) {
@@ -58,12 +57,7 @@ struct PokerHand: Comparable, Equatable {
     }
 
     private static var comboDetectors: [ComboDetector] = {
-        var detectors: [ComboDetector] = []
-
-        for comboType in ComboType.allCases.reversed() {
-            detectors.append(comboType.comboDetectorType.make())
-        }
-
-        return detectors
+        return ComboType.allCases.reversed()
+            .map { $0.comboDetectorType.make() }
     }()
 }

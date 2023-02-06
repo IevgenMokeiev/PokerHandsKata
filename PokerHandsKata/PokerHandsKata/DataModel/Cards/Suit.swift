@@ -6,6 +6,7 @@
 //
 
 enum Suit: String, Equatable {
+
     case clubs = "C"
     case diamonds = "D"
     case hearts = "H"

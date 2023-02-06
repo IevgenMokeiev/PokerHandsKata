@@ -16,7 +16,6 @@ class ThreeOfAKindComboDetector: ComboDetector {
     }
 
     func determineCombo(cards: [PokerCard]) -> Combo? {
-
         let values = cards.values
         let repeatingValues = values.duplicatesMap
         let repeatingValuesKeysArray = Array(repeatingValues.keys)

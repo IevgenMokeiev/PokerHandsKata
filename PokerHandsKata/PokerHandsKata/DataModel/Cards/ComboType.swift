@@ -20,7 +20,6 @@ enum ComboType: Equatable, Comparable, CaseIterable {
     case straightFlash
 
     var comboDetectorType: ComboDetector.Type {
-
         switch self {
         case .highCard:
             return HighCardComboDetector.self

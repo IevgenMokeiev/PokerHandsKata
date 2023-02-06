@@ -19,7 +19,6 @@ class StraightFlushComboDetector: ComboDetector {
     }
 
     func determineCombo(cards: [PokerCard]) -> Combo? {
-
         if straightComboDetector.determineCombo(cards: cards) != nil,
            flushComboDetector.determineCombo(cards: cards) != nil {
             return Combo(

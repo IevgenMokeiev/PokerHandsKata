@@ -13,12 +13,10 @@ struct Combo: Equatable, Comparable {
     var rankingArray: [Int]
 
     static func < (lhs: Combo, rhs: Combo) -> Bool {
-        if lhs.comboType < rhs.comboType {
-            return true
-        } else if lhs.comboType > rhs.comboType {
-            return false
+        if lhs.comboType != rhs.comboType {
+            return lhs.comboType < rhs.comboType
         } else {
-            return lhs.rankingArray.isRankedLessThan(rhs.rankingArray)
+            return lhs.rankingArray < rhs.rankingArray
         }
     }
 }

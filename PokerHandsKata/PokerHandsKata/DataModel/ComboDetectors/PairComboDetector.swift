@@ -16,7 +16,6 @@ class PairComboDetector: ComboDetector {
     }
 
     func determineCombo(cards: [PokerCard]) -> Combo? {
-
         let values = cards.values
         let repeatingValues = cards.values.duplicatesMap
         let repeatingValuesKeysArray = Array(repeatingValues.keys)

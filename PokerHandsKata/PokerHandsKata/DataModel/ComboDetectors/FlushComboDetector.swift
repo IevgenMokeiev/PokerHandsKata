@@ -14,7 +14,6 @@ class FlushComboDetector: ComboDetector {
     }
 
     func determineCombo(cards: [PokerCard]) -> Combo? {
-
         let suites = cards.map { $0.suit }
         let repeatingSuites = suites.duplicatesMap
         let sortedRanks = cards.sortedRanks
