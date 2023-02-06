@@ -16,8 +16,7 @@ class HighCardComboDetector: ComboDetector {
     }
 
     static func highCardCombo(cards: [PokerCard]) -> Combo {
-        let sortedCards = cards.sortedRanks
-        return Combo(comboType: .highCard, rankingArray: sortedCards)
+        return Combo(comboType: .highCard, rankingArray: cards.sortedRanks)
     }
 
     func determineCombo(cards: [PokerCard]) -> Combo? {
