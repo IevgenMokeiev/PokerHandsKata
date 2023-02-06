@@ -41,19 +41,12 @@ struct PokerHand: Comparable, Equatable {
     // MARK: - Private
 
     private static func detectCombo(cards: [PokerCard]) -> Combo {
-        var resultCombo: Combo?
-        for comboDetector in comboDetectors {
-            if let combo = comboDetector.detectCombo(cards: cards) {
-                resultCombo = combo
-                break
-            }
-        }
+        let combo = comboDetectors
+            .lazy
+            .compactMap { $0.detectCombo(cards: cards) }
+            .first
 
-        if let resultCombo{
-            return resultCombo
-        } else {
-            return HighCardComboDetector.highCardCombo(cards: cards)
-        }
+        return combo ?? HighCardComboDetector.highCardCombo(cards: cards)
     }
 
     private static var comboDetectors: [ComboDetector] = {
