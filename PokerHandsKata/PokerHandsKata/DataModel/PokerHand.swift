@@ -21,7 +21,7 @@ struct PokerHand: Comparable, Equatable {
             return nil
         }
         self.cards = cards
-        self.combo = Self.determineCombo(cards: cards)
+        self.combo = Self.detectCombo(cards: cards)
     }
     
     init?(stringRepresentation: String) {
@@ -40,10 +40,10 @@ struct PokerHand: Comparable, Equatable {
     
     // MARK: - Private
 
-    private static func determineCombo(cards: [PokerCard]) -> Combo {
+    private static func detectCombo(cards: [PokerCard]) -> Combo {
         var resultCombo: Combo?
         for comboDetector in comboDetectors {
-            if let combo = comboDetector.determineCombo(cards: cards) {
+            if let combo = comboDetector.detectCombo(cards: cards) {
                 resultCombo = combo
                 break
             }

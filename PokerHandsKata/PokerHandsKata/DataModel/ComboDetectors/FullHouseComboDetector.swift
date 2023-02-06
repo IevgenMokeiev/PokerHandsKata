@@ -15,7 +15,7 @@ class FullHouseComboDetector: ComboDetector {
         return self.init()
     }
 
-    func determineCombo(cards: [PokerCard]) -> Combo? {
+    func detectCombo(cards: [PokerCard]) -> Combo? {
         let values = cards.values
         let repeatingValues = values.duplicatesMap
         let repeatingValuesKeysArray = Array(repeatingValues.keys)

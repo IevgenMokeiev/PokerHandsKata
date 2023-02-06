@@ -15,7 +15,7 @@ class StraightComboDetector: ComboDetector {
         return self.init()
     }
 
-    func determineCombo(cards: [PokerCard]) -> Combo? {
+    func detectCombo(cards: [PokerCard]) -> Combo? {
         let sortedRanks = cards.sortedRanks
 
         if sortedRanks.isSequential {

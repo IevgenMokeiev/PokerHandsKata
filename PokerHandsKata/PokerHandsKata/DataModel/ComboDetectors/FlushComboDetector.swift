@@ -13,7 +13,7 @@ class FlushComboDetector: ComboDetector {
         return self.init()
     }
 
-    func determineCombo(cards: [PokerCard]) -> Combo? {
+    func detectCombo(cards: [PokerCard]) -> Combo? {
         let suites = cards.map { $0.suit }
         let repeatingSuites = suites.duplicatesMap
         let sortedRanks = cards.sortedRanks
