@@ -9,6 +9,12 @@ import Foundation
 
 class PairComboDetector: ComboDetector {
 
+    required init() {}
+
+    static func make() -> Self {
+        return self.init()
+    }
+
     func determineCombo(cards: [PokerCard]) -> Combo? {
 
         let values = cards.values
@@ -23,7 +29,10 @@ class PairComboDetector: ComboDetector {
         let otherRanks = values.sortedRanks(except: [value])
         switch repeatingValues[value] {
         case 2:
-            return .pair(value.rank, otherRanks[0], otherRanks[1], otherRanks[2])
+            return Combo(
+                comboType: .pair,
+                rankingArray: [value.rank, otherRanks[0], otherRanks[1], otherRanks[2]]
+            )
         default:
             return nil
         }

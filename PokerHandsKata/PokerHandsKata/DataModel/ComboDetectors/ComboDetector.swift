@@ -7,5 +7,6 @@
 
 protocol ComboDetector {
 
+    static func make() -> Self
     func determineCombo(cards: [PokerCard]) -> Combo?
 }

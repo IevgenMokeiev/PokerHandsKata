@@ -9,6 +9,12 @@ import Foundation
 
 class FourOfAKindComboDetector: ComboDetector {
 
+    required init() {}
+
+    static func make() -> Self {
+        return self.init()
+    }
+
     func determineCombo(cards: [PokerCard]) -> Combo? {
 
         let values = cards.values
@@ -22,7 +28,7 @@ class FourOfAKindComboDetector: ComboDetector {
 
         switch repeatingValues[value] {
         case 4:
-            return .fourOfAKind(value.rank)
+            return Combo(comboType: .fourOfAKind, rankingArray: [value.rank])
         default:
             return nil
         }

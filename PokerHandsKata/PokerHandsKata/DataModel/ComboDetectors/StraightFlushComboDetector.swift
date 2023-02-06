@@ -7,16 +7,25 @@
 
 import Foundation
 
-struct StraightFlushComboDetector: ComboDetector {
+class StraightFlushComboDetector: ComboDetector {
 
     private let straightComboDetector = StraightComboDetector()
     private let flushComboDetector = FlushComboDetector()
+
+    required init() {}
+
+    static func make() -> Self {
+        return self.init()
+    }
 
     func determineCombo(cards: [PokerCard]) -> Combo? {
 
         if straightComboDetector.determineCombo(cards: cards) != nil,
            flushComboDetector.determineCombo(cards: cards) != nil {
-            return .straightFlash(cards.sortedRanks.first ?? 0)
+            return Combo(
+                comboType: .straightFlash,
+                rankingArray: [cards.sortedRanks.first ?? 0]
+            )
         } else {
             return nil
         }

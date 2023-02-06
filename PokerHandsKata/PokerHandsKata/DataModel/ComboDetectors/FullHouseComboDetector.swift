@@ -9,6 +9,12 @@ import Foundation
 
 class FullHouseComboDetector: ComboDetector {
 
+    required init() {}
+
+    static func make() -> Self {
+        return self.init()
+    }
+
     func determineCombo(cards: [PokerCard]) -> Combo? {
 
         let values = cards.values
@@ -23,9 +29,9 @@ class FullHouseComboDetector: ComboDetector {
         let value2 = repeatingValuesKeysArray[1]
         switch (repeatingValues[value1], repeatingValues[value2]) {
         case (2, 3):
-            return .fullHouse(value2.rank)
+            return Combo(comboType: .fullHouse, rankingArray: [value2.rank])
         case (3, 2):
-            return .fullHouse(value1.rank)
+            return Combo(comboType: .fullHouse, rankingArray: [value1.rank])
         default:
             return nil
         }

@@ -9,6 +9,12 @@ import Foundation
 
 class ThreeOfAKindComboDetector: ComboDetector {
 
+    required init() {}
+
+    static func make() -> Self {
+        return self.init()
+    }
+
     func determineCombo(cards: [PokerCard]) -> Combo? {
 
         let values = cards.values
@@ -22,7 +28,7 @@ class ThreeOfAKindComboDetector: ComboDetector {
 
         switch repeatingValues[value] {
         case 3:
-            return .threeOfAKind(value.rank)
+            return Combo(comboType: .threeOfAKind, rankingArray: [value.rank])
         default:
             return nil
         }

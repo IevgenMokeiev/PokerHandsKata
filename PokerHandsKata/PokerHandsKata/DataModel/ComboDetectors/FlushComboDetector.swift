@@ -7,6 +7,12 @@
 
 class FlushComboDetector: ComboDetector {
 
+    required init() {}
+
+    static func make() -> Self {
+        return self.init()
+    }
+
     func determineCombo(cards: [PokerCard]) -> Combo? {
 
         let suites = cards.map { $0.suit }
@@ -18,14 +24,7 @@ class FlushComboDetector: ComboDetector {
               repeatingSuites[suit] == 5 else {
             return nil
         }
-
-        return .flush(
-            sortedRanks[0],
-            sortedRanks[1],
-            sortedRanks[2],
-            sortedRanks[3],
-            sortedRanks[4]
-        )
+        return Combo(comboType: .flush, rankingArray: sortedRanks)
     }
 }
 

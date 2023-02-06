@@ -54,8 +54,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3D 5S 9C KD",
             hand2String: "2C 3H 4S 8C KH",
-            expectedCombo1: .highCard(13, 9, 5, 3, 2),
-            expectedCombo2: .highCard(13, 8, 4, 3, 2),
+            expectedCombo1: Combo(comboType: .highCard, rankingArray: [13, 9, 5, 3, 2]),
+            expectedCombo2: Combo(comboType: .highCard, rankingArray: [13, 8, 4, 3, 2]),
             expectedResult: .firstWins
         )
     }
@@ -64,8 +64,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3D 5S 9C KD",
             hand2String: "2D 3H 5C 9S KH",
-            expectedCombo1: .highCard(13, 9, 5, 3, 2),
-            expectedCombo2: .highCard(13, 9, 5, 3, 2),
+            expectedCombo1: Combo(comboType: .highCard, rankingArray: [13, 9, 5, 3, 2]),
+            expectedCombo2: Combo(comboType: .highCard, rankingArray: [13, 9, 5, 3, 2]),
             expectedResult: .tie
         )
     }
@@ -74,8 +74,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3D 5S 9C 9D",
             hand2String: "2C 3H 4S 8C AH",
-            expectedCombo1: .pair(9, 5 ,3 ,2),
-            expectedCombo2: .highCard(14, 8 ,4 ,3 ,2),
+            expectedCombo1: Combo(comboType: .pair, rankingArray: [9, 5 ,3 ,2]),
+            expectedCombo2: Combo(comboType: .highCard, rankingArray: [14, 8 ,4 ,3 ,2]),
             expectedResult: .firstWins
         )
     }
@@ -84,8 +84,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3D 5S 9C 9D",
             hand2String: "2C 3H 4S 8C 8H",
-            expectedCombo1: .pair(9, 5 ,3 ,2),
-            expectedCombo2: .pair(8, 4 ,3 ,2),
+            expectedCombo1: Combo(comboType: .pair, rankingArray: [9, 5 ,3 ,2]),
+            expectedCombo2: Combo(comboType: .pair, rankingArray: [8, 4 ,3 ,2]),
             expectedResult: .firstWins
         )
     }
@@ -94,8 +94,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3D 5S 9C 9D",
             hand2String: "2C 3H 4S 9C 9H",
-            expectedCombo1: .pair(9, 5 ,3 ,2),
-            expectedCombo2: .pair(9, 4 ,3 ,2),
+            expectedCombo1: Combo(comboType: .pair, rankingArray: [9, 5 ,3 ,2]),
+            expectedCombo2: Combo(comboType: .pair, rankingArray: [9, 4 ,3 ,2]),
             expectedResult: .firstWins
         )
     }
@@ -104,8 +104,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3D 5S 9C 9D",
             hand2String: "2C 4H 4S 9C 9H",
-            expectedCombo1: .pair(9, 5, 3 ,2),
-            expectedCombo2: .twoPairs(9, 4 ,2),
+            expectedCombo1: Combo(comboType: .pair, rankingArray: [9, 5, 3 , 2]),
+            expectedCombo2: Combo(comboType: .twoPairs, rankingArray: [9, 4 ,2]),
             expectedResult: .secondWins
         )
     }
@@ -114,8 +114,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3D 9S 9C 9D",
             hand2String: "2C 4H 4S 9C 9H",
-            expectedCombo1: .threeOfAKind(9),
-            expectedCombo2: .twoPairs(9, 4, 2),
+            expectedCombo1: Combo(comboType: .threeOfAKind, rankingArray: [9]),
+            expectedCombo2: Combo(comboType: .twoPairs, rankingArray: [9, 4, 2]),
             expectedResult: .firstWins
         )
     }
@@ -124,8 +124,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3D 9S 9C 9D",
             hand2String: "2C 4H 10S 10C 10H",
-            expectedCombo1: .threeOfAKind(9),
-            expectedCombo2: .threeOfAKind(10),
+            expectedCombo1: Combo(comboType: .threeOfAKind, rankingArray: [9]),
+            expectedCombo2: Combo(comboType: .threeOfAKind, rankingArray: [10]),
             expectedResult: .secondWins
         )
     }
@@ -134,8 +134,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3S 4C 5D 6H",
             hand2String: "2S 8S 10C 10S 10H",
-            expectedCombo1: .straight(6),
-            expectedCombo2: .threeOfAKind(10),
+            expectedCombo1: Combo(comboType: .straight, rankingArray: [6]),
+            expectedCombo2: Combo(comboType: .threeOfAKind, rankingArray: [10]),
             expectedResult: .firstWins
         )
     }
@@ -144,8 +144,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3S 4C 5D 6H",
             hand2String: "QS KS AC 2S 3H",
-            expectedCombo1: .straight(6),
-            expectedCombo2: .straight(14),
+            expectedCombo1: Combo(comboType: .straight, rankingArray: [6]),
+            expectedCombo2: Combo(comboType: .straight, rankingArray: [14]),
             expectedResult: .secondWins
         )
     }
@@ -154,8 +154,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3S 4C 5D 6H",
             hand2String: "2S 8S 10S QS AS",
-            expectedCombo1: .straight(6),
-            expectedCombo2: .flush(14, 12, 10, 8, 2),
+            expectedCombo1: Combo(comboType: .straight, rankingArray: [6]),
+            expectedCombo2: Combo(comboType: .flush, rankingArray: [14, 12, 10, 8, 2]),
             expectedResult: .secondWins
         )
     }
@@ -164,8 +164,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 3H 4H 5H 7H",
             hand2String: "2S 8S 10S QS AS",
-            expectedCombo1: .flush(7, 5, 4, 3, 2),
-            expectedCombo2: .flush(14, 12, 10, 8, 2),
+            expectedCombo1:  Combo(comboType: .flush, rankingArray: [7, 5, 4, 3, 2]),
+            expectedCombo2:  Combo(comboType: .flush, rankingArray: [14, 12, 10, 8, 2]),
             expectedResult: .secondWins
         )
     }
@@ -174,8 +174,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 4S 4C 2D 4H",
             hand2String: "2S 8S AS QS 3S",
-            expectedCombo1: .fullHouse(4),
-            expectedCombo2: .flush(14, 12, 8, 3, 2),
+            expectedCombo1: Combo(comboType: .fullHouse, rankingArray: [4]),
+            expectedCombo2: Combo(comboType: .flush, rankingArray: [14, 12, 8, 3, 2]),
             expectedResult: .firstWins
         )
     }
@@ -184,8 +184,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 4S 4C 2D 4H",
             hand2String: "3S 8S 3S 8H 8C",
-            expectedCombo1: .fullHouse(4),
-            expectedCombo2: .fullHouse(8),
+            expectedCombo1: Combo(comboType: .fullHouse, rankingArray: [4]),
+            expectedCombo2: Combo(comboType: .fullHouse, rankingArray: [8]),
             expectedResult: .secondWins
         )
     }
@@ -194,8 +194,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "2H 4S 4C 2D 4H",
             hand2String: "3S 10S 10H 10D 10C",
-            expectedCombo1: .fullHouse(4),
-            expectedCombo2: .fourOfAKind(10),
+            expectedCombo1: Combo(comboType: .fullHouse, rankingArray: [4]),
+            expectedCombo2: Combo(comboType: .fourOfAKind, rankingArray: [10]),
             expectedResult: .secondWins
         )
     }
@@ -204,8 +204,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "7H 4S 7C 7D 7S",
             hand2String: "3S 10S 10H 10D 10C",
-            expectedCombo1: .fourOfAKind(7),
-            expectedCombo2: .fourOfAKind(10),
+            expectedCombo1: Combo(comboType: .fourOfAKind, rankingArray: [7]),
+            expectedCombo2: Combo(comboType: .fourOfAKind, rankingArray: [10]),
             expectedResult: .secondWins
         )
     }
@@ -214,8 +214,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "7H 4S 7C 7D 7S",
             hand2String: "3S 4S 5S 6S 7S",
-            expectedCombo1: .fourOfAKind(7),
-            expectedCombo2: .straightFlash(7),
+            expectedCombo1: Combo(comboType: .fourOfAKind, rankingArray: [7]),
+            expectedCombo2: Combo(comboType: .straightFlash, rankingArray: [7]),
             expectedResult: .secondWins
         )
     }
@@ -224,8 +224,8 @@ class PokerHandsKataTests: XCTestCase {
         expectHands(
             hand1String: "7D 8D 9D 10D JD",
             hand2String: "3S 4S 5S 6S 7S",
-            expectedCombo1: .straightFlash(11),
-            expectedCombo2: .straightFlash(7),
+            expectedCombo1: Combo(comboType: .straightFlash, rankingArray: [11]),
+            expectedCombo2: Combo(comboType: .straightFlash, rankingArray: [7]),
             expectedResult: .firstWins
         )
     }

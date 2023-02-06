@@ -9,6 +9,12 @@ import Foundation
 
 class TwoPairsComboDetector: ComboDetector {
 
+    required init() {}
+
+    static func make() -> Self {
+        return self.init()
+    }
+
     func determineCombo(cards: [PokerCard]) -> Combo? {
 
         let values = cards.values
@@ -30,7 +36,7 @@ class TwoPairsComboDetector: ComboDetector {
                 return nil
             }
             let ranks = [value1.rank, value2.rank, otherCardRank].sorted { $0 > $1 }
-            return .twoPairs(ranks[0], ranks[1], ranks[2])
+            return Combo(comboType: .twoPairs, rankingArray: ranks)
         default:
             return nil
         }

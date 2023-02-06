@@ -23,6 +23,17 @@ extension Array where Element == Int {
         let sorted = sorted()
         return (sorted.map { $0 - 1 }.dropFirst() == sorted.dropLast())
     }
+
+    func isRankedLessThan(_ otherArray: [Int]) -> Bool {
+        var result = false
+        for (element1, elemen2) in zip(self, otherArray) {
+            if element1 != elemen2 {
+                result = element1 < elemen2
+                break
+            }
+        }
+        return result
+    }
 }
 
 extension Array where Element == PokerCard {

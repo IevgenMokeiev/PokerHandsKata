@@ -42,17 +42,6 @@ struct PokerHand: Comparable, Equatable {
 
     private static func determineCombo(cards: [PokerCard]) -> Combo {
 
-        let comboDetectors: [ComboDetector] = [
-            StraightFlushComboDetector(),
-            FourOfAKindComboDetector(),
-            FullHouseComboDetector(),
-            FlushComboDetector(),
-            StraightComboDetector(),
-            ThreeOfAKindComboDetector(),
-            TwoPairsComboDetector(),
-            PairComboDetector()
-        ]
-
         var resultCombo: Combo?
         for comboDetector in comboDetectors {
             if let combo = comboDetector.determineCombo(cards: cards) {
@@ -60,18 +49,21 @@ struct PokerHand: Comparable, Equatable {
                 break
             }
         }
-        return resultCombo ?? makeHighestCard(cards: cards)
-    }
-    
-    private static func makeHighestCard(cards: [PokerCard]) -> Combo {
 
-        let sortedCards = cards.sortedRanks
-        return .highCard(
-            sortedCards[0],
-            sortedCards[1],
-            sortedCards[2],
-            sortedCards[3],
-            sortedCards[4]
-        )
+        if let resultCombo{
+            return resultCombo
+        } else {
+            return HighCardComboDetector.highCardCombo(cards: cards)
+        }
     }
+
+    private static var comboDetectors: [ComboDetector] = {
+        var detectors: [ComboDetector] = []
+
+        for comboType in ComboType.allCases.reversed() {
+            detectors.append(comboType.comboDetectorType.make())
+        }
+
+        return detectors
+    }()
 }
